@@ -1,0 +1,5 @@
+# Netlify/Cloudflare Pages format: old-path new-path 301
+/hire  https://www.fiverr.com/mxhoaib  302
+/services/marble  /services/marble-shop-drawings/  301
+/services/autocad  /services/autocad-drafting/  301
+/services/3d  /services/3d-rendering/  301

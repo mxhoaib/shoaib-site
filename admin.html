@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Post composer (local)</title>
+<style>*{box-sizing:border-box}body{font:16px -apple-system,Arial,sans-serif;max-width:860px;margin:40px auto;padding:0 20px;color:#1d1d1f}label{display:block;font-weight:600;margin:14px 0 4px}input,textarea{width:100%;padding:10px;border:1px solid #ccc;border-radius:10px;font:inherit}textarea{min-height:360px;font-family:ui-monospace,monospace}button{margin-top:16px;padding:12px 22px;border:0;border-radius:99px;background:#0066cc;color:#fff;font-size:16px;cursor:pointer}#c{color:#6e6e73}</style></head><body>
+<h1>New blog post</h1><p>Compose locally, click Download, save the file into <code>posts/</code>, then run <code>python3 build.py</code>. Nothing is uploaded.</p>
+<label>Title (50–60 chars ideal)<input id="t"></label><label>Meta description (140–160 chars)<input id="d"></label>
+<label>Tags (comma separated, first = main keyword)<input id="g"></label>
+<label>Body (Markdown: ## heading, - list, 1. list, **bold**, [link](url))<textarea id="b">## Introduction
+
+Write here...</textarea></label><p id="c"></p><button id="s">Download .md</button>
+<script>var $=function(i){return document.getElementById(i)};function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,70)}
+function cnt(){$('c').textContent=$('b').value.split(/\s+/).filter(Boolean).length+' words · title '+$('t').value.length+' chars · description '+$('d').value.length+' chars'}
+['t','d','b'].forEach(function(i){$(i).addEventListener('input',cnt)});cnt();
+$('s').onclick=function(){var sl=slug($('t').value||'post');var md='---\ntitle: '+$('t').value+'\nslug: '+sl+'\ndescription: '+$('d').value+'\ndate: '+new Date().toISOString().slice(0,10)+'\ntags: '+$('g').value+'\n---\n'+$('b').value+'\n';
+var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([md],{type:'text/markdown'}));a.download=sl+'.md';a.click()}</script></body></html>
