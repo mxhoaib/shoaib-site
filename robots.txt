@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 
-Sitemap: https://shoaib.d3ddd.com/sitemap.xml
+Sitemap: https://mxhoaib.github.io/shoaib-site/sitemap.xml
