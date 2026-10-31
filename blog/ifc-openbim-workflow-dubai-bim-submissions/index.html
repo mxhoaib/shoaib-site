@@ -1,0 +1,203 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IFC OpenBIM Workflow for Dubai Municipality BIM Submissions</title><meta name="description" content="Export clean IFC for Dubai BIM submissions—units, classification, model checks before Build in Dubai upload.">
+<link rel="canonical" href="https://shoaibsite.blogspot.com/2026/10/blog-post_877.html"><link rel="alternate" hreflang="en-US" href="https://mxhoaib.github.io/shoaib-site/blog/ifc-openbim-workflow-dubai-bim-submissions/"><link rel="alternate" hreflang="en-GB" href="https://mxhoaib.github.io/shoaib-site/blog/ifc-openbim-workflow-dubai-bim-submissions/"><link rel="alternate" hreflang="en-CA" href="https://mxhoaib.github.io/shoaib-site/blog/ifc-openbim-workflow-dubai-bim-submissions/"><link rel="alternate" hreflang="en-AE" href="https://mxhoaib.github.io/shoaib-site/blog/ifc-openbim-workflow-dubai-bim-submissions/"><link rel="alternate" hreflang="x-default" href="https://mxhoaib.github.io/shoaib-site/blog/ifc-openbim-workflow-dubai-bim-submissions/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="article"><meta property="og:title" content="IFC OpenBIM Workflow for Dubai Municipality BIM Submissions"><meta property="og:description" content="Export clean IFC for Dubai BIM submissions—units, classification, model checks before Build in Dubai upload."><meta property="og:url" content="https://shoaibsite.blogspot.com/2026/10/blog-post_877.html"><meta property="og:image" content="https://mxhoaib.github.io/shoaib-site/assets/og.png"><meta property="og:site_name" content="Shoaib Hussan"><meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="IFC OpenBIM Workflow for Dubai Municipality BIM Submissions"><meta name="twitter:description" content="Export clean IFC for Dubai BIM submissions—units, classification, model checks before Build in Dubai upload."><meta name="twitter:image" content="https://mxhoaib.github.io/shoaib-site/assets/og.png">
+<meta name="theme-color" content="#ffffff"><link rel="icon" href="../../assets/logo.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="Blog" href="../../rss.xml">
+<!-- Google Search Console: set GSC_TOKEN in build.py, or verify via DNS TXT --><style>:root{--ink:#1d1d1f;--mute:#6e6e73;--gray:#f5f5f7;--acc:#0066cc;--r:18px}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);background:#fff;overflow-x:hidden}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+img,svg{max-width:100%;height:auto}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}.narrow{max-width:760px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;padding:8px;z-index:99}
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.78);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,.08)}
+.nav-in{display:flex;align-items:center;gap:20px;height:52px}.logo{color:var(--ink);font-size:15px;white-space:nowrap}.logo b{margin-right:4px}
+.links{display:flex;gap:18px;margin-left:auto;font-size:13px}.links a{color:var(--ink);opacity:.8}.links a[aria-current]{opacity:1;font-weight:600}
+.btn{display:inline-block;background:var(--acc);color:#fff;border-radius:980px;padding:12px 24px;font-size:17px;margin:6px 4px;border:0;cursor:pointer}
+.btn:hover{text-decoration:none;background:#0077ed}.btn.ghost{background:transparent;color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}.btn.sm{padding:6px 14px;font-size:13px;margin:0}
+.dark .btn.ghost{color:#2997ff;box-shadow:inset 0 0 0 1px #2997ff}
+h1,h2,h3{letter-spacing:-.02em;line-height:1.1;margin:0 0 .5em}
+.huge{font-size:clamp(48px,8vw,96px);font-weight:700;letter-spacing:-.035em;line-height:1.02}
+.big{font-size:clamp(32px,5vw,56px);font-weight:700;letter-spacing:-.03em}
+h2{font-size:28px}h3,.h3{font-size:21px;margin:0 0 .4em}
+.lede{font-size:clamp(19px,2.2vw,24px);color:var(--mute);max-width:760px;margin:0 auto 1em}
+.eyebrow{color:#bf4800;font-weight:600;font-size:17px;margin:0 0 8px}
+.hero{padding:96px 0 72px}.hero .ico{color:var(--acc)}
+.hero-art{display:block;margin:48px auto 0;width:100%;max-width:900px}
+.sec{padding:120px 0}.gray{background:var(--gray)}.dark{background:#000;color:#f5f5f7}.dark .lede{color:#a1a1a6}.center{text-align:center}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.tight{gap:40px}
+.card{display:block;background:#fff;border-radius:var(--r);padding:32px;color:var(--ink);margin:0;transition:transform .3s}
+.card:hover{transform:scale(1.015);text-decoration:none}.card p{color:var(--mute)}.card .ico{color:var(--acc);margin-bottom:12px}.more{color:var(--acc)}
+.card time{font-size:13px;color:var(--mute)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.ticks{list-style:none;padding:0}.ticks li{padding:8px 0 8px 28px;position:relative;border-bottom:1px solid #e5e5ea}.ticks li:before{content:"";position:absolute;left:4px;top:15px;width:10px;height:6px;border-left:2px solid var(--acc);border-bottom:2px solid var(--acc);transform:rotate(-45deg)}
+details{border-bottom:1px solid #d2d2d7;padding:18px 0}summary{cursor:pointer;font-weight:600;list-style:none}summary h2{display:inline;font-size:19px}summary::-webkit-details-marker{display:none}summary:after{content:"+";float:right;color:var(--acc);font-size:22px}details[open] summary:after{content:"−"}
+.chips a{display:inline-block;padding:8px 16px;border-radius:980px;background:var(--gray);margin:4px;color:var(--ink);font-size:15px}
+.crumbs ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:14px 0 0;margin:0;font-size:13px;color:var(--mute)}.crumbs li+li:before{content:"›";margin-right:6px}
+.prose p,.prose li{font-size:19px;line-height:1.65}.prose h2{margin-top:1.6em}.meta{color:var(--mute)}
+.art{padding-top:64px}.toc{background:var(--gray);border-radius:var(--r);padding:20px 28px;margin:28px 0}.toc li{font-size:16px}
+.box{background:var(--gray);border-radius:var(--r);padding:28px;margin:48px 0}
+.form label{display:block;margin:0 0 16px;font-weight:600;font-size:15px}.form input,.form select,.form textarea{display:block;width:100%;margin-top:6px;padding:12px 14px;border:1px solid #d2d2d7;border-radius:12px;font:inherit;background:#fff}
+.small{font-size:13px;color:var(--mute)}
+.foot{background:var(--gray);padding:48px 0 32px;font-size:13px;color:var(--mute)}.fcols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:28px}.fcols a{display:block;color:var(--mute);padding:3px 0}.fcols b{color:var(--ink);display:block;margin-bottom:8px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}.reveal.in{opacity:1;transform:none}
+.draw path,.draw rect,.draw ellipse{stroke-dasharray:1600;stroke-dashoffset:1600;animation:dr 2.4s ease forwards}@keyframes dr{to{stroke-dashoffset:0}}
+.no-js .reveal{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.draw *{animation:none!important;stroke-dashoffset:0!important}.card{transition:none}html{scroll-behavior:auto}}
+@media (max-width:900px){.grid3,.grid4{grid-template-columns:1fr 1fr}.split{grid-template-columns:1fr}}
+@media (max-width:640px){.links{display:none}.nav-in{justify-content:space-between}.grid3,.grid4,.grid2,.fcols{grid-template-columns:1fr}.sec{padding:80px 0}.hero{padding:64px 0 48px}.btn{padding:11px 20px}}
+.prose table{width:100%;border-collapse:collapse;margin:1.2em 0;font-size:16px}.prose th,.prose td{border:1px solid #d2d2d7;padding:8px 10px;text-align:left;vertical-align:top}.prose th{background:var(--gray)}.prose figure{margin:1.2em 0}.prose figcaption{font-size:15px;color:var(--mute);margin-top:.4em}.prose .key-takeaways{background:var(--gray);border-radius:var(--r);padding:8px 22px;margin:1.4em 0}.prose h3{margin-top:1.1em}.prose code{font-size:.92em;background:var(--gray);padding:.1em .35em;border-radius:6px}.prose svg{display:block;width:100%;height:auto}</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "IFC OpenBIM Workflow for Dubai Municipality BIM Submissions", "description": "Export clean IFC for Dubai BIM submissions—units, classification, model checks before Build in Dubai upload.", "datePublished": "2026-10-26", "dateModified": "2026-10-26", "author": {"@type": "Person", "name": "Shoaib Hussan", "url": "https://mxhoaib.github.io/shoaib-site/about/"}, "publisher": {"@type": "Person", "name": "Shoaib Hussan", "url": "https://mxhoaib.github.io/shoaib-site/about/"}, "mainEntityOfPage": "https://shoaibsite.blogspot.com/2026/10/blog-post_877.html", "image": "https://mxhoaib.github.io/shoaib-site/assets/og.png", "keywords": "Architecture UAE, Civil Engineering, Software Guides", "wordCount": 901}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is IFC OpenBIM for Dubai projects?", "acceptedAnswer": {"@type": "Answer", "text": "IFC is the openBIM schema used to exchange building models between different software. Dubai BIM submissions increasingly expect clean IFC (or specified model formats) that pass unit, classification and geometry checks."}}, {"@type": "Question", "name": "Which IFC version should I export?", "acceptedAnswer": {"@type": "Answer", "text": "Use the version stated in the project BEP or DM submission guide for your permit date. Confirm schema (e.g. IFC2x3 vs IFC4) before batch export."}}, {"@type": "Question", "name": "Can Archicad and Revit both deliver IFC for the same project?", "acceptedAnswer": {"@type": "Answer", "text": "Yes—openBIM is designed for that—but only if coordinates, classification and MVD/view settings are agreed in the BEP and validated on a federated check."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mxhoaib.github.io/shoaib-site/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://mxhoaib.github.io/shoaib-site/blog/"}, {"@type": "ListItem", "position": 3, "name": "IFC OpenBIM Workflow for Dubai Municipality BIM Submissions", "item": "https://mxhoaib.github.io/shoaib-site/blog/ifc-openbim-workflow-dubai-bim-submissions/"}]}</script><!-- GA4: set GA4_ID in build.py to enable Google Analytics 4 --></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap nav-in"><a class="logo" href="../../" aria-label="Shoaib Hussan home"><b>Shoaib</b> Hussan</a><nav class="links" aria-label="Main"><a href="../../services/">Services</a><a href="../../portfolio/">Work</a><a href="https://d3ddd.com/blog/" aria-current=page>Blog</a><a href="../../about/">About</a><a href="../../faq/">FAQ</a><a href="../../contact/">Contact</a></nav><a class="btn sm" href="https://www.fiverr.com/mxhoaib" rel="noopener">Hire me on Fiverr</a></div></header>
+<nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../../blog/">Blog</a></li><li aria-current="page">IFC OpenBIM Workflow for Dubai Municipality BIM Submissions</li></ol></nav><main id="main"><article class="sec art"><div class="wrap narrow prose"><header><p class="eyebrow">Architecture UAE</p><h1 class="big">IFC OpenBIM Workflow for Dubai Municipality BIM Submissions</h1>
+<p class="meta">By <a href="../../about/" rel="author">Shoaib Hussan</a> · <time datetime="2026-10-26">2026-10-26</time> · 4 min read</p></header>
+<nav class="toc" aria-label="Contents"><b>Contents</b><ol><li><a href="#standards-and-vendor-docs">Standards and vendor docs</a></li><li><a href="#pre-export-checklist">Pre-export checklist</a></li><li><a href="#revit-and-archicad-notes">Revit and Archicad notes</a></li><li><a href="#common-ifc-rejection-causes">Common IFC rejection causes</a></li><li><a href="#minimum-bep-clauses-for-ifc">Minimum BEP clauses for IFC</a></li><li><a href="#federation-test-before-the-real-submission">Federation test before the real submission</a></li><li><a href="#property-set-essentials">Property set essentials</a></li><li><a href="#document-controller-tips">Document controller tips</a></li><li><a href="#openbim-benefits-for-mixed-uae-teams">OpenBIM benefits for mixed UAE teams</a></li><li><a href="#version-pinning">Version pinning</a></li><li><a href="#training-drill-for-the-team">Training drill for the team</a></li><li><a href="#summary">Summary</a></li><li><a href="#faq">FAQ</a></li></ol></nav><figure style="margin:0 0 1.5em 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" style="max-width:100%;height:auto;border-radius:8px;" role="img" aria-label="IFC OpenBIM workflow from Revit Archicad to Dubai submission">
+<rect width="1200" height="630" fill="#102030"/>
+<rect x="40" y="200" width="220" height="120" rx="10" fill="#2a5080"/><text x="90" y="270" fill="#d0e8ff" font-family="Arial,sans-serif" font-size="18">Revit</text>
+<rect x="40" y="360" width="220" height="120" rx="10" fill="#2a6080"/><text x="70" y="430" fill="#d0e8ff" font-family="Arial,sans-serif" font-size="18">Archicad</text>
+<path d="M260 260 L360 260 L360 420 L260 420" fill="none" stroke="#70b0e0" stroke-width="3"/>
+<rect x="380" y="240" width="280" height="200" rx="12" fill="#1a4058" stroke="#50c8a0" stroke-width="3"/>
+<text x="460" y="320" fill="#a0f0d0" font-family="Arial,sans-serif" font-size="22">IFC</text>
+<text x="430" y="360" fill="#80d0b0" font-family="Arial,sans-serif" font-size="15">openBIM export</text>
+<path d="M660 340 L760 340" stroke="#70b0e0" stroke-width="3" marker-end="url(#a)"/>
+<rect x="780" y="180" width="380" height="320" rx="12" fill="#1a3848" stroke="#e0b050" stroke-width="3"/>
+<text x="820" y="250" fill="#ffe0a0" font-family="Arial,sans-serif" font-size="20">Model check</text>
+<text x="820" y="310" fill="#d0c090" font-family="Arial,sans-serif" font-size="15">Units &#183; Classification</text>
+<text x="820" y="360" fill="#d0c090" font-family="Arial,sans-serif" font-size="15">Coordinates &#183; IFC schema</text>
+<text x="820" y="420" fill="#d0c090" font-family="Arial,sans-serif" font-size="15">Build in Dubai upload</text>
+<text x="40" y="80" fill="#b0d0e8" font-family="Arial,sans-serif" font-size="22">IFC OpenBIM &#183; Dubai BIM submissions</text>
+</svg>
+<figcaption>Authoring tools export IFC for validation before Dubai Municipality / Build in Dubai submission.</figcaption>
+</figure>
+
+<p><strong>IFC OpenBIM Dubai</strong> workflows are how multi-vendor teams hand models to Dubai Municipality processes without locking everyone into one proprietary format. As the <a href="../../blog/dubai-bim-mandate-2026-submission-guide/">Dubai BIM mandate 2026</a> approaches, clean IFC export—units, classification, coordinates and schema—becomes a submission skill, not an optional geek interest.</p>
+<p>This guide walks Revit and Archicad authors through a practical openBIM path: setup, export, model checking and upload readiness for Build in Dubai, with links to buildingSMART and official product pages only.</p>
+<div class="key-takeaways">
+<p><strong>Key takeaways</strong></p>
+<ul>
+<li>Freeze schema, MVD/view definition and units in the BEP.</li>
+<li>Validate IFC on a checker before every authority upload.</li>
+<li>Shared coordinates first—geometry second.</li>
+<li>Pair IFC drops with drawing packages that match model names.</li>
+</ul>
+</div>
+<h2 id="standards-and-vendor-docs">Standards and vendor docs</h2>
+<p>OpenBIM home: <a href="https://www.buildingsmart.org/" rel="noopener" target="_blank">buildingSMART</a> and the <a href="https://technical.buildingsmart.org/standards/ifc/" rel="noopener" target="_blank">IFC technical standards pages</a>. Authoring: <a href="https://www.autodesk.com/products/revit/overview" rel="noopener" target="_blank">Autodesk Revit</a>, <a href="https://www.graphisoft.com/archicad/" rel="noopener" target="_blank">Graphisoft Archicad</a>. Authority: <a href="https://www.dm.gov.ae/" rel="noopener" target="_blank">Dubai Municipality</a>.</p>
+<h2 id="pre-export-checklist">Pre-export checklist</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Target</th>
+<th>If wrong</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Length unit</td>
+<td>mm (typical UAE)</td>
+<td>Model appears 1000× too small/large</td>
+</tr>
+<tr>
+<td>Coordinate system</td>
+<td>Shared site origin per BEP</td>
+<td>Clash tests misalign</td>
+</tr>
+<tr>
+<td>IFC schema</td>
+<td>As specified for submission</td>
+<td>Portal rejects file</td>
+</tr>
+<tr>
+<td>Classification</td>
+<td>Agreed system mapped to elements</td>
+<td>Quantities/spaces fail checks</td>
+</tr>
+<tr>
+<td>Element naming</td>
+<td>Matches sheet/model index</td>
+<td>Reviewers cannot trace issues</td>
+</tr>
+</tbody>
+</table>
+<h2 id="revit-and-archicad-notes">Revit and Archicad notes</h2>
+<p>Small-firm Revit habits: <a href="https://shoaibsite.blogspot.com/2026/10/revit-bim-workflow-for-small-design.html" rel="noopener" target="_blank">Revit BIM workflow</a>. Tool choice: <a href="https://shoaibsite.blogspot.com/2026/10/archicad-vs-revit-which-bim-tool-fits.html" rel="noopener" target="_blank">Archicad vs Revit</a>. Site context from Civil 3D: <a href="https://shoaibsite.blogspot.com/2026/10/civil-3d-basics-for-site-and.html" rel="noopener" target="_blank">Civil 3D basics</a>. After export, federate for clashes with <a href="../../blog/navisworks-clash-detection-uae-coordination/">Navisworks clash detection</a>.</p>
+<ol>
+<li>Map project parameters to IFC properties required by the BEP.</li>
+<li>Export only the submission view/set—not the entire worksharing jungle.</li>
+<li>Open IFC in a viewer/checker; confirm storeys and spaces.</li>
+<li>Fix authoring model; re-export (do not “patch” IFC by hand for authority files).</li>
+<li>Upload per Build in Dubai instructions—drawing tips in <a href="../../blog/build-in-dubai-drawing-package-tips/">Build in Dubai drawing package tips</a>.</li>
+</ol>
+<p>Shop-drawing alignment still matters: <a href="https://shoaibsite.blogspot.com/2026/10/shop-drawing-approval-process-dubai.html" rel="noopener" target="_blank">shop drawing approval Dubai</a>.</p>
+<h2 id="common-ifc-rejection-causes">Common IFC rejection causes</h2>
+<ul>
+<li>Mixed units between architecture and MEP exports.</li>
+<li>Duplicate site origins after a late coordinate “fix”.</li>
+<li>Empty IfcSpace / wrong storey assignment.</li>
+<li>Huge files from exporting linked CAD underlays as solids.</li>
+</ul>
+<h2 id="minimum-bep-clauses-for-ifc">Minimum BEP clauses for IFC</h2>
+<ul>
+<li>Authoring software + version for each discipline.</li>
+<li>IFC schema and Model View Definition (or export setup name).</li>
+<li>Shared coordinate origin, rotation and units.</li>
+<li>Storey naming identical across disciplines.</li>
+<li>Classification system and required property sets.</li>
+<li>Checker tool and pass/fail gates before upload.</li>
+</ul>
+<h2 id="federation-test-before-the-real-submission">Federation test before the real submission</h2>
+<p>One week before the portal date, run a “dress rehearsal”:</p>
+<ol>
+<li>Export architecture, structure and MEP IFCs with the agreed settings.</li>
+<li>Federate in Navisworks (or the project checker).</li>
+<li>Confirm storeys stack and grids align within tolerance.</li>
+<li>Fix authors’ models—not the federated file.</li>
+<li>Re-export and archive the passing set with a checksum or CDE revision ID.</li>
+</ol>
+<h2 id="property-set-essentials">Property set essentials</h2>
+<p>Even a light UAE submission benefits from consistent properties:</p>
+<ul>
+<li>Fire rating on walls/doors where claimed.</li>
+<li>Material name matching the finish schedule.</li>
+<li>Manufacturer fields only when specified—do not invent.</li>
+<li>Space names identical to the architectural room schedule.</li>
+</ul>
+<p>Map once in the template; audit with schedules before export.</p>
+<h2 id="document-controller-tips">Document controller tips</h2>
+<ul>
+<li>Filename includes project, discipline, schema, revision, date.</li>
+<li>Reject uploads that lack a checker report PDF.</li>
+<li>Keep a register of which IFC produced which drawing issue.</li>
+<li>On portal failure, archive the error message with the file hash.</li>
+</ul>
+<h2 id="openbim-benefits-for-mixed-uae-teams">OpenBIM benefits for mixed UAE teams</h2>
+<p>Main contractors rarely share one authoring tool across every subconsultant. IFC lets architecture in Revit, structure in another platform, and MEP from a specialist still meet in a federated check. That is the point of buildingSMART standards—not ideology.</p>
+<p>When a client insists on native files only, still keep IFC as the coordination exchange format unless the BEP forbids it. Native files remain the authoring truth; IFC is the bridge.</p>
+<p>For early massing that is not yet BIM-ready, remember Forma exports are concept aids—rebuild cleanly before authority IFC drops.</p>
+<h2 id="version-pinning">Version pinning</h2>
+<p>Pin Revit/Archicad build numbers in the BEP for the submission window. Mid-project upgrades that change IFC exporters are a classic source of last-week portal failures. If an upgrade is mandatory, re-run the dress rehearsal before the authority date.</p>
+<h2 id="training-drill-for-the-team">Training drill for the team</h2>
+<p>Pick a completed small project, export IFC with the new BEP settings, federate, and score errors. Fix the template until the drill passes. Doing that drill on a live portal deadline is how teams learn the hard way.</p>
+<h2 id="summary">Summary</h2>
+<p>Clean <strong>IFC OpenBIM Dubai</strong> submissions come from boring consistency: pinned software versions, agreed schema, shared coordinates, validated property sets, and a dress rehearsal before the portal date. Pair models with matching drawing packages and clash close-out so Build in Dubai reviewers—and any AI-assisted checks—see one coherent project story.</p>
+<h2 id="faq">FAQ</h2>
+<h3 id="what-is-ifc-openbim-for-dubai-projects">What is IFC OpenBIM for Dubai projects?</h3>
+<p>IFC is the openBIM schema used to exchange building models between different software. Dubai BIM submissions increasingly expect clean IFC (or specified model formats) that pass unit, classification and geometry checks.</p>
+<h3 id="which-ifc-version-should-i-export">Which IFC version should I export?</h3>
+<p>Use the version stated in the project BEP or DM submission guide for your permit date. Confirm schema (e.g. IFC2x3 vs IFC4) before batch export.</p>
+<h3 id="can-archicad-and-revit-both-deliver-ifc-for-the-same-project">Can Archicad and Revit both deliver IFC for the same project?</h3>
+<p>Yes—openBIM is designed for that—but only if coordinates, classification and MVD/view settings are agreed in the BEP and validated on a federated check.</p>
+<p>Need drawings that stay aligned to your IFC deliverables? <a href="https://d3ddd.com/" rel="noopener" target="_blank">d3ddd.com</a> · <a href="mailto:info@d3ddd.com">info@d3ddd.com</a>.</p>
+<p>Originally published on <a href="https://shoaibsite.blogspot.com/2026/10/blog-post_877.html" rel="noopener" target="_blank">ShoaibSite</a>.</p>
+<aside class="box"><b>Shoaib Hussan</b><p>Instagram <a href="https://www.instagram.com/mxhaib/" rel="noopener">@mxhaib</a> · <a href="https://www.linkedin.com/in/mshoaib94" rel="noopener">LinkedIn</a> · Fiverr <a href="https://www.fiverr.com/mxhoaib" rel="noopener">mxhoaib</a> · <a href="mailto:mxhoaib0@gmail.com">mxhoaib0@gmail.com</a></p></aside>
+<h2>More articles</h2><ul><li><a href="../../blog/autocad-architecture-toolset-uae-floor-plans/">AutoCAD Architecture Toolset for UAE Floor Plans &amp; Renovation Plans</a></li><li><a href="../../blog/primavera-p6-vs-microsoft-project-uae-fit-out/">Primavera P6 vs Microsoft Project for UAE Fit-Out Schedules</a></li><li><a href="../../blog/stone-staircase-shop-drawings-treads-risers/">Stone Staircase Shop Drawings: Treads Risers Stringers &amp; Fixings</a></li></ul></div></article></main>
+<footer class="foot"><div class="wrap"><div class="fcols"><div><b>Shoaib Hussan</b><p>CAD drafting, shop drawings &amp; 3D design. UAE-based, working with clients in the USA, UK, Canada and UAE.</p></div>
+<div><b>Services</b><a href="../../services/marble-shop-drawings/">Marble shop drawings</a><a href="../../services/architectural-drafting/">Architectural drafting</a><a href="../../services/autocad-drafting/">AutoCAD 2D/3D</a><a href="../../services/3d-rendering/">3D renders</a><a href="../../services/bim-modeling/">BIM</a><a href="../../services/website-development/">Websites</a><a href="../../services/architectural-estimation/">Estimation &amp; BOQ</a></div>
+<div><b>Contact</b><a href="https://www.fiverr.com/mxhoaib" rel="noopener me">Fiverr</a><a href="mailto:mxhoaib0@gmail.com">mxhoaib0@gmail.com</a><a href="../../blog/">Blog</a><a href="../../rss.xml">RSS</a></div></div>
+<p class="small">© 2026 Shoaib Hussan. Fiverr is a trademark of Fiverr International Ltd.; this is an independent site.</p></div></footer>
+<script src="../../assets/main.js" defer></script></body></html>
