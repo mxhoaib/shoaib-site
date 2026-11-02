@@ -106,7 +106,7 @@ def header(P: str, current: str = "") -> str:
 def footer(P: str) -> str:
     return f'''<footer class="foot"><div class="wrap"><div class="fcols"><div><b>Shoaib Hussan</b><p>CAD drafting, shop drawings &amp; 3D design. UAE-based, working with clients in the USA, UK, Canada and UAE.</p></div>
 <div><b>Services</b><a href="{P}services/marble-shop-drawings/">Marble shop drawings</a><a href="{P}services/architectural-drafting/">Architectural drafting</a><a href="{P}services/autocad-drafting/">AutoCAD 2D/3D</a><a href="{P}services/3d-rendering/">3D renders</a><a href="{P}services/bim-modeling/">BIM</a><a href="{P}services/website-development/">Websites</a><a href="{P}services/architectural-estimation/">Estimation &amp; BOQ</a></div>
-<div><b>Contact</b><a href="{FIVERR}" rel="noopener me">Fiverr</a><a href="mailto:{EMAIL}">{EMAIL}</a><a href="https://d3ddd.com/blog/">Blog</a><a href="{P}rss.xml">RSS</a></div></div>
+<div><b>Contact</b><a href="{FIVERR}" rel="noopener me">Fiverr</a><a href="mailto:{EMAIL}">{EMAIL}</a><!--wa--><!--/wa--><a href="https://d3ddd.com/blog/">Blog</a><a href="{P}rss.xml">RSS</a></div></div>
 <p class="small">© 2026 Shoaib Hussan. Fiverr is a trademark of Fiverr International Ltd.; this is an independent site.</p></div></footer>'''
 
 
