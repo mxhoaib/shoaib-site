@@ -296,7 +296,7 @@ def render_post(post: dict, others: list[dict], style: str) -> str:
 <h2>More articles</h2><ul>{more}</ul></div></article></main>
 <footer class="foot"><div class="wrap"><div class="fcols"><div><b>Shoaib Hussan</b><p>CAD drafting, shop drawings &amp; 3D design. UAE-based, working with clients in the USA, UK, Canada and UAE.</p></div>
 <div><b>Services</b><a href="../../services/marble-shop-drawings/">Marble shop drawings</a><a href="../../services/architectural-drafting/">Architectural drafting</a><a href="../../services/autocad-drafting/">AutoCAD 2D/3D</a><a href="../../services/3d-rendering/">3D renders</a><a href="../../services/bim-modeling/">BIM</a><a href="../../services/website-development/">Websites</a><a href="../../services/architectural-estimation/">Estimation &amp; BOQ</a></div>
-<div><b>Contact</b><a href="https://www.fiverr.com/mxhoaib" rel="noopener me">Fiverr</a><a href="mailto:mxhoaib0@gmail.com">mxhoaib0@gmail.com</a><a href="../../blog/">Blog</a><a href="../../rss.xml">RSS</a></div></div>
+<div><b>Contact</b><a href="https://www.fiverr.com/mxhoaib" rel="noopener me">Fiverr</a><a href="mailto:mxhoaib0@gmail.com">mxhoaib0@gmail.com</a><!--wa--><!--/wa--><a href="../../blog/">Blog</a><a href="../../rss.xml">RSS</a></div></div>
 <p class="small">© 2026 Shoaib Hussan. Fiverr is a trademark of Fiverr International Ltd.; this is an independent site.</p></div></footer>
 <script src="../../assets/main.js" defer></script></body></html>
 """
@@ -405,6 +405,19 @@ def strip_experience_claims() -> None:
             raise SystemExit(f"forbidden experience phrase remains in {path.relative_to(ROOT)}")
 
 
+WA_MARK = re.compile(r"<!--wa(?::(\w+))?-->.*?<!--/wa-->", re.S)
+
+
+def apply_whatsapp() -> None:
+    """Fill every <!--wa-->...<!--/wa--> marker from contact_config (one place to add the number later)."""
+    from contact_config import whatsapp_html
+    for page in ROOT.rglob("*.html"):
+        text = page.read_text(encoding="utf-8")
+        updated = WA_MARK.sub(lambda m: f"<!--wa{':' + m.group(1) if m.group(1) else ''}-->{whatsapp_html(m.group(1) or 'footer')}<!--/wa-->", text)
+        if updated != text:
+            page.write_text(updated, encoding="utf-8")
+
+
 def check_internal_links() -> None:
     missing = []
     for page in ROOT.rglob("*.html"):
@@ -456,6 +469,7 @@ def main() -> None:
     import projects  # portfolio grid, project pages, homepage section, nav link
     projects.build(SITE, style)
     strip_experience_claims()
+    apply_whatsapp()
     check_internal_links()
     print(f"built {len(fresh)} new posts; blog index lists {len(posts)}")
 
