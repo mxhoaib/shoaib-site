@@ -6,9 +6,12 @@ Requires the Markdown package: python3 -m pip install markdown
 Front matter (YAML-style, JSON-quoted values):
 
     title, date, description, eyebrow, keywords, canonical
+    optional: seo_title (document title and social title), byline
 
 `canonical`, when set, becomes <link rel="canonical"> (and the matching
 Open Graph / mainEntity URL). Other pages keep a self canonical.
+`seo_title`, when set, is the <title> and social title; the visible heading
+stays `title`. `byline`, when set, replaces the default author line.
 """
 
 from __future__ import annotations
@@ -114,6 +117,8 @@ def load_markdown_posts() -> list[dict]:
             "eyebrow": meta.get("eyebrow") or "Guide",
             "keywords": meta.get("keywords") or "",
             "canonical": (meta.get("canonical") or "").strip(),
+            "seo_title": (meta.get("seo_title") or "").strip(),
+            "byline": (meta.get("byline") or "").strip(),
             "body": body,
             "markdown": True,
         })
@@ -177,7 +182,11 @@ def word_count(fragment: str) -> int:
 
 
 def faq_schema(fragment: str) -> str | None:
-    match = re.search(r'<h2 id="faq">.*?</h2>(.*)', fragment, flags=re.S)
+    match = re.search(
+        r'<h2 id="(?:faq|frequently-asked-questions)">.*?</h2>(.*)',
+        fragment,
+        flags=re.S,
+    )
     if not match:
         return None
     block = match.group(1)
@@ -229,6 +238,8 @@ def render_post(post: dict, others: list[dict], style: str) -> str:
     local = f"{SITE}/blog/{slug}/"
     canonical = post["canonical"] or local
     title = post["title"]
+    seo_title = post.get("seo_title") or title
+    byline = post.get("byline") or "Shoaib Hussan"
     description = post["description"]
     date = post["date"][:10]
     body = decorate_links(add_heading_ids(render_markdown(post["body"])))
@@ -243,7 +254,12 @@ def render_post(post: dict, others: list[dict], style: str) -> str:
         for item in others
     )
     esc_title = html.escape(title)
+    esc_seo = html.escape(seo_title)
+    esc_byline = html.escape(byline)
     esc_desc = html.escape(description)
+    author = {"@type": "Person", "name": "Shoaib Hussan", "url": f"{SITE}/about/"}
+    if post.get("byline") and ", " in post["byline"]:
+        author["jobTitle"] = post["byline"].split(", ", 1)[1]
     article = {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -251,7 +267,7 @@ def render_post(post: dict, others: list[dict], style: str) -> str:
         "description": description,
         "datePublished": date,
         "dateModified": date,
-        "author": {"@type": "Person", "name": "Shoaib Hussan", "url": f"{SITE}/about/"},
+        "author": author,
         "publisher": {"@type": "Person", "name": "Shoaib Hussan", "url": f"{SITE}/about/"},
         "mainEntityOfPage": canonical,
         "image": f"{SITE}/assets/og.png",
@@ -280,17 +296,17 @@ def render_post(post: dict, others: list[dict], style: str) -> str:
         + "</script>"
     )
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc_title}</title><meta name="description" content="{esc_desc}">
+<title>{esc_seo}</title><meta name="description" content="{esc_desc}">
 <link rel="canonical" href="{html.escape(canonical, quote=True)}">{hreflang(local)}
 <meta name="robots" content="index,follow,max-image-preview:large">
-<meta property="og:type" content="article"><meta property="og:title" content="{esc_title}"><meta property="og:description" content="{esc_desc}"><meta property="og:url" content="{html.escape(canonical, quote=True)}"><meta property="og:image" content="{SITE}/assets/og.png"><meta property="og:site_name" content="Shoaib Hussan"><meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc_title}"><meta name="twitter:description" content="{esc_desc}"><meta name="twitter:image" content="{SITE}/assets/og.png">
+<meta property="og:type" content="article"><meta property="og:title" content="{esc_seo}"><meta property="og:description" content="{esc_desc}"><meta property="og:url" content="{html.escape(canonical, quote=True)}"><meta property="og:image" content="{SITE}/assets/og.png"><meta property="og:site_name" content="Shoaib Hussan"><meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc_seo}"><meta name="twitter:description" content="{esc_desc}"><meta name="twitter:image" content="{SITE}/assets/og.png">
 <meta name="theme-color" content="#ffffff"><link rel="icon" href="../../assets/logo.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="Blog" href="../../rss.xml">
 <!-- Google Search Console: set GSC_TOKEN in build.py, or verify via DNS TXT -->{style}{schema}<!-- GA4: set GA4_ID in build.py to enable Google Analytics 4 --></head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><div class="wrap nav-in"><a class="logo" href="../../" aria-label="Shoaib Hussan home"><b>Shoaib</b> Hussan</a><nav class="links" aria-label="Main"><a href="../../services/">Services</a><a href="../../projects/">Portfolio</a><a href="../../portfolio/">Work</a><a href="https://d3ddd.com/blog/" aria-current=page>Blog</a><a href="../../about/">About</a><a href="../../faq/">FAQ</a><a href="../../contact/">Contact</a></nav><a class="btn sm" href="https://www.fiverr.com/mxhoaib" rel="noopener">Hire me on Fiverr</a></div></header>
 <nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../../blog/">Blog</a></li><li aria-current="page">{esc_title}</li></ol></nav><main id="main"><article class="sec art"><div class="wrap narrow prose"><header><p class="eyebrow">{html.escape(post["eyebrow"])}</p><h1 class="big">{esc_title}</h1>
-<p class="meta">By <a href="../../about/" rel="author">Shoaib Hussan</a> · <time datetime="{date}">{date}</time> · {minutes} min read</p></header>
+<p class="meta">By <a href="../../about/" rel="author">{esc_byline}</a> · <time datetime="{date}">{date}</time> · {minutes} min read</p></header>
 {toc}{body}
 {author_box()}
 <h2>More articles</h2><ul>{more}</ul></div></article></main>
