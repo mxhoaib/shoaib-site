@@ -304,7 +304,7 @@ def render_post(post: dict, others: list[dict], style: str) -> str:
 <meta name="theme-color" content="#ffffff"><link rel="icon" href="../../assets/logo.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="Blog" href="../../rss.xml">
 <!-- Google Search Console: set GSC_TOKEN in build.py, or verify via DNS TXT -->{style}{schema}<!-- GA4: set GA4_ID in build.py to enable Google Analytics 4 --></head><body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav"><div class="wrap nav-in"><a class="logo" href="../../" aria-label="Shoaib Hussan home"><b>Shoaib</b> Hussan</a><nav class="links" aria-label="Main"><a href="../../services/">Services</a><a href="../../projects/">Portfolio</a><a href="../../portfolio/">Work</a><a href="https://d3ddd.com/blog/" aria-current=page>Blog</a><a href="../../about/">About</a><a href="../../faq/">FAQ</a><a href="../../contact/">Contact</a></nav><a class="btn sm" href="https://www.fiverr.com/mxhoaib" rel="noopener">Hire me on Fiverr</a></div></header>
+<header class="nav"><div class="wrap nav-in"><a class="logo" href="../../" aria-label="Shoaib Hussan home"><b>Shoaib</b> Hussan</a><nav class="links" aria-label="Main"><a href="../../services/">Services</a><a href="../../projects/">Portfolio</a><a href="../../portfolio/">Work</a><a href="../../#web-apps">Tools</a><a href="https://d3ddd.com/blog/" aria-current=page>Blog</a><a href="../../about/">About</a><a href="../../faq/">FAQ</a><a href="../../contact/">Contact</a></nav><a class="btn sm" href="https://www.fiverr.com/mxhoaib" rel="noopener">Hire me on Fiverr</a></div></header>
 <nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../../blog/">Blog</a></li><li aria-current="page">{esc_title}</li></ol></nav><main id="main"><article class="sec art"><div class="wrap narrow prose"><header><p class="eyebrow">{html.escape(post["eyebrow"])}</p><h1 class="big">{esc_title}</h1>
 <p class="meta">By <a href="../../about/" rel="author">{esc_byline}</a> · <time datetime="{date}">{date}</time> · {minutes} min read</p></header>
 {toc}{body}
@@ -486,6 +486,8 @@ def main() -> None:
     projects.build(SITE, style)
     strip_experience_claims()
     apply_whatsapp()
+    import apps  # homepage Web Apps section and Tools nav link
+    apps.apply()
     check_internal_links()
     print(f"built {len(fresh)} new posts; blog index lists {len(posts)}")
 

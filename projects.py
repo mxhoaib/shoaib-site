@@ -99,7 +99,7 @@ def header(P: str, current: str = "") -> str:
         return f'<a href="{P}{path}"{cur}>{label}</a>'
     return (f'<header class="nav"><div class="wrap nav-in"><a class="logo" href="{P or "./"}" aria-label="Shoaib Hussan home"><b>Shoaib</b> Hussan</a>'
             f'<nav class="links" aria-label="Main">{a("services/", "Services")}{a("projects/", "Portfolio")}{a("portfolio/", "Work")}'
-            f'<a href="https://d3ddd.com/blog/">Blog</a>{a("about/", "About")}{a("faq/", "FAQ")}{a("contact/", "Contact")}</nav>'
+            f'{a("#web-apps", "Tools")}<a href="https://d3ddd.com/blog/">Blog</a>{a("about/", "About")}{a("faq/", "FAQ")}{a("contact/", "Contact")}</nav>'
             f'<a class="btn sm" href="{FIVERR}" rel="noopener">Hire me on Fiverr</a></div></header>')
 
 
