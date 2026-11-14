@@ -4,7 +4,7 @@ date: "2026-10-26T19:09:22.702-07:00"
 description: "Produce approval-ready stone stair shop drawings—dimensions, nosings, fixings, sequencing for UAE fit-outs."
 eyebrow: "Shop Drawings"
 keywords: "Shop Drawings, Architecture UAE, Tutorials"
-canonical: "https://shoaibsite.blogspot.com/2026/10/stone-staircase-shop-drawings-treads-risers.html"
+canonical: "https://d3ddd.com/blog/stone-staircase-shop-drawings-treads-risers/"
 ---
 
 <figure style="margin:0 0 1.5em 0;">

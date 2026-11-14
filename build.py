@@ -298,7 +298,7 @@ def render_post(post: dict, others: list[dict], style: str) -> str:
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc_seo}</title><meta name="description" content="{esc_desc}">
 <link rel="canonical" href="{html.escape(canonical, quote=True)}">{hreflang(local)}
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="noindex, follow">
 <meta property="og:type" content="article"><meta property="og:title" content="{esc_seo}"><meta property="og:description" content="{esc_desc}"><meta property="og:url" content="{html.escape(canonical, quote=True)}"><meta property="og:image" content="{SITE}/assets/og.png"><meta property="og:site_name" content="Shoaib Hussan"><meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc_seo}"><meta name="twitter:description" content="{esc_desc}"><meta name="twitter:image" content="{SITE}/assets/og.png">
 <meta name="theme-color" content="#ffffff"><link rel="icon" href="../../assets/logo.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="Blog" href="../../rss.xml">
@@ -360,22 +360,13 @@ def update_listings(posts: list[dict]) -> None:
 
 
 def update_sitemap(posts: list[dict]) -> None:
-    path = ROOT / "sitemap.xml"
-    text = path.read_text(encoding="utf-8")
-    kept = [block for block in re.findall(r"<url>.*?</url>", text) if "/blog" not in block]
-
-    def entry(loc: str, lastmod: str) -> str:
-        alts = "".join(
-            f'<xhtml:link rel="alternate" hreflang="{lang}" href="{loc}"/>'
-            for lang in ("en-US", "en-GB", "en-CA", "en-AE", "x-default")
-        )
-        return f"<url><loc>{loc}</loc><lastmod>{lastmod}</lastmod>{alts}</url>"
-
-    newest = posts[0]["date"][:10]
-    blog_entries = [entry(f"{SITE}/blog/", newest)]
-    blog_entries.extend(entry(f"{SITE}/blog/{post['slug']}/", post["date"][:10]) for post in posts)
-    head = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'
-    path.write_text(head + "".join(kept) + "".join(blog_entries) + "</urlset>\n", encoding="utf-8")
+    # This portfolio stays visitable but is not submitted for indexing.
+    (ROOT / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        "</urlset>\n",
+        encoding="utf-8",
+    )
 
 
 def update_rss(posts: list[dict]) -> None:
