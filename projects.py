@@ -18,7 +18,6 @@ SRC = ROOT / "projects_src"
 IMG = "assets/projects"
 FIVERR = "https://www.fiverr.com/mxhoaib"
 EMAIL = "mxhoaib0@gmail.com"
-LASTMOD = "2026-11-02"
 SERVICE_LABELS = {
     "marble-shop-drawings": "Marble &amp; stone shop drawings",
     "architectural-drafting": "Architectural drafting",
@@ -122,16 +121,17 @@ def card(p: dict, P: str, heading: str = "h3") -> str:
             f'<{heading}>{esc(p["title"])}</{heading}><p>{esc(p["short"])}</p><span class="more">View project ›</span></div></a>')
 
 
-def head(site: str, P: str, title: str, desc: str, path: str, style: str, schema: list, image: tuple | None = None, og_type: str = "website") -> str:
+def head(site: str, P: str, title: str, desc: str, path: str, style: str, schema: list, image: tuple | None = None, og_type: str = "website", canonical: str | None = None) -> str:
     url = f"{site}/{path}"
+    canon = canonical or url
     img_url, iw, ih = image or (f"{site}/assets/og.png", None, None)
     dims = f'<meta property="og:image:width" content="{iw}"><meta property="og:image:height" content="{ih}">' if iw else ""
     alts = "".join(f'<link rel="alternate" hreflang="{l}" href="{url}">' for l in ("en-US", "en-GB", "en-CA", "en-AE", "x-default"))
     ld = "".join('<script type="application/ld+json">' + json.dumps(s, ensure_ascii=False, separators=(", ", ": ")) + "</script>" for s in schema)
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title><meta name="description" content="{desc}">
-<link rel="canonical" href="{url}">{alts}
-<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="{canon}">{alts}
+<meta name="robots" content="noindex, follow">
 <meta property="og:type" content="{og_type}"><meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:url" content="{url}"><meta property="og:image" content="{img_url}">{dims}<meta property="og:site_name" content="Shoaib Hussan"><meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{desc}"><meta name="twitter:image" content="{img_url}">
 <meta name="theme-color" content="#ffffff"><link rel="icon" href="{P}assets/logo.svg" type="image/svg+xml"><link rel="alternate" type="application/rss+xml" title="Blog" href="{P}rss.xml">
@@ -152,7 +152,7 @@ def render_index(site: str, projects: list[dict], style: str) -> str:
     items = {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "url": f'{site}/projects/{p["slug"]}/', "name": p["title"]} for i, p in enumerate(projects)]}
     schema = [crumbs(site, [("Home", f"{site}/"), ("Portfolio", f"{site}/projects/")]), items]
-    return (head(site, P, title, desc, "projects/", style, schema) + header(P, "projects/") +
+    return (head(site, P, title, desc, "projects/", style, schema, canonical="https://d3ddd.com/projects/") + header(P, "projects/") +
             '<nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="../">Home</a></li><li aria-current="page">Portfolio</li></ol></nav>'
             '<main id="main"><section class="hero center"><div class="wrap"><p class="eyebrow">Selected work</p><h1 class="huge">Portfolio.</h1>'
             '<p class="lede">Marble and stone shop drawings, slab layouts and tiling details from villa projects in Dubai. Client details have been removed from every sheet.</p></div></section>'
@@ -199,7 +199,8 @@ def render_project(site: str, p: dict, projects: list[dict], style: str) -> str:
             f'<p class="center" style="margin-top:28px"><a href="{P}projects/">All projects ›</a></p></div></section></main>\n')
     w, h = p["sizes"][first]
     return (head(site, P, t + " | Shoaib Hussan", esc(p["meta_description"]), f'projects/{p["slug"]}/', style, schema,
-                 (f'{site}/{IMG}/{p["slug"]}/{first}', w, h), "article") + header(P, "projects/") + body + footer(P) +
+                 (f'{site}/{IMG}/{p["slug"]}/{first}', w, h), "article",
+                 f'https://d3ddd.com/projects/{p["slug"]}/') + header(P, "projects/") + body + footer(P) +
             f'\n<script src="{P}assets/main.js" defer></script><script src="{P}assets/gallery.js" defer></script></body></html>\n')
 
 
@@ -244,16 +245,13 @@ def add_nav_link() -> None:
 
 
 def update_sitemap(site: str, projects: list[dict]) -> None:
-    path = ROOT / "sitemap.xml"
-    text = path.read_text(encoding="utf-8")
-    text = re.sub(r"<url><loc>[^<]*/projects/[^<]*</loc>.*?</url>", "", text)
-
-    def entry(loc: str) -> str:
-        alts = "".join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{loc}"/>' for l in ("en-US", "en-GB", "en-CA", "en-AE", "x-default"))
-        return f"<url><loc>{loc}</loc><lastmod>{LASTMOD}</lastmod>{alts}</url>"
-
-    entries = [entry(f"{site}/projects/")] + [entry(f'{site}/projects/{p["slug"]}/') for p in projects]
-    path.write_text(text.replace("</urlset>", "".join(entries) + "</urlset>"), encoding="utf-8")
+    # This portfolio stays visitable but is not submitted for indexing.
+    (ROOT / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        "</urlset>\n",
+        encoding="utf-8",
+    )
 
 
 def build(site: str, base_style: str) -> None:

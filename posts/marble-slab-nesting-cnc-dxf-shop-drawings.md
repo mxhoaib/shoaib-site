@@ -4,7 +4,7 @@ date: "2026-10-26T19:05:22.281-07:00"
 description: "Turn marble shop drawings into nested slab layouts and clean CNC DXF—kerf, waste, vein direction, labels."
 eyebrow: "Shop Drawings"
 keywords: "Shop Drawings, Tutorials, Architecture UAE"
-canonical: "https://shoaibsite.blogspot.com/2026/10/marble-slab-nesting-cnc-dxf-shop-drawings.html"
+canonical: "https://d3ddd.com/"
 ---
 
 <figure style="margin:0 0 1.5em 0;">
